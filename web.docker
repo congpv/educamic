@@ -1,0 +1,5 @@
+FROM nginx:latest
+
+ADD ./vhost.conf /usr/local/etc/php-fpm.d/educamic.conf
+
+WORKDIR /var/www

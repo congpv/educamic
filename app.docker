@@ -1,0 +1,12 @@
+FROM php:7.1-fpm
+
+RUN apt-get update && apt-get install -y libmcrypt-dev mysql-client \
+    && docker-php-ext-install mcrypt pdo_mysql && \
+
+	# composer
+    curl -sS https://getcomposer.org/installer | php && \
+    mv composer.phar /usr/local/bin/composer && \
+
+    # add user
+    useradd -m -s /bin/bash -u 1000 laravel
+WORKDIR /var/www
